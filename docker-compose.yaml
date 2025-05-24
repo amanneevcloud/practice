@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web: 
+    network_mode: host
+    build: .
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 127.0.0.1:8000"
+    volumes:
+      -.:/app
+    environment:
+    - DATABASE_ENGINE=django.db.backends.postgresql
+    - DATABASE_HOST=
+    - DATABASE_PORT=5432
+    - DATABASE_NAME=aiml_backend
+    - DATABASE_USER=postgres
+    - DATABASE_PASSWORD=
